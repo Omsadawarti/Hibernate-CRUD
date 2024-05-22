@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="receipt2" language="groovy" pageWidth="595" pageHeight="400" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fd8835f8-dfd7-4411-81d9-2368b7142b19">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     receipts.`id` AS receipts_id,
+     receipts.`amount` AS receipts_amount,
+     receipts.`amountInWords` AS receipts_amountInWords,
+     receipts.`course` AS receipts_course,
+     receipts.`gender` AS receipts_gender,
+     receipts.`name` AS receipts_name,
+     receipts.`payDate` AS receipts_payDate,
+     receipts.`status` AS receipts_status
+FROM
+     `receipts` receipts]]>
+	</queryString>
+	<field name="receipts_id" class="java.lang.Integer"/>
+	<field name="receipts_amount" class="java.lang.Integer"/>
+	<field name="receipts_amountInWords" class="java.lang.String"/>
+	<field name="receipts_course" class="java.lang.String"/>
+	<field name="receipts_gender" class="java.lang.String"/>
+	<field name="receipts_name" class="java.lang.String"/>
+	<field name="receipts_payDate" class="java.sql.Date"/>
+	<field name="receipts_status" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="346" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="346" uuid="9658100b-b655-4fe1-9b12-5458ab17978a"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Double" lineColor="#000099"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="19" y="295" width="111" height="32" uuid="1c017846-cf12-4962-8519-4e7bda9c76b8"/>
+			</rectangle>
+			<image scaleImage="FillFrame">
+				<reportElement x="14" y="10" width="70" height="67" uuid="e6132ff0-a880-44c3-8a83-a2271cd50bc0"/>
+				<imageExpression><![CDATA["LOGO ONLY.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="95" y="10" width="359" height="67" forecolor="#000099" uuid="30306609-6283-4177-817d-12c01f397d13"/>
+				<textElement>
+					<font size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NLT Infotech Pvt Ltd]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="10" width="100" height="67" uuid="16be4351-27c0-4a1d-9028-144f31f7e342"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pl. No. 795, Sudampuri, Sakkardara Nagpur]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="81" width="555" height="1" uuid="38e1ef4b-4fd4-426b-8fe7-69956f7daa3b"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="14" y="97" width="177" height="20" uuid="61bbdd92-2a78-413a-a81c-a93b15125d82"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Received With Thanks From]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="97" width="350" height="20" uuid="3090420c-c77a-44ed-9afe-b333ad61f866"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{receipts_name}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="191" y="117" width="350" height="1" uuid="235c4171-badc-4834-9ce1-5f7d84fe88ed"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="14" y="144" width="177" height="20" uuid="ff0ee130-b4f1-4f81-893a-14de8461b6ea"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[The Sum of Rs (in Word)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="144" width="350" height="20" uuid="47da2cf6-06d7-4ec6-b3d1-3fcd0926a0f9"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{receipts_amountInWords}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="191" y="164" width="350" height="1" uuid="747f5947-7136-473d-9cd7-fc76992c5277"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<textField pattern="">
+				<reportElement x="25" y="301" width="100" height="20" uuid="62ffa7ed-12ec-49c3-8822-aec6f0463593"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Rs. "+$F{receipts_amount}+"/-"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
